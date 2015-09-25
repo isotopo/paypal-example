@@ -26,21 +26,38 @@ $ npm install -g webpack
 $ webpack
 ```
 
-## Run
+## Configure
+
+Create a `.paypalrc` file with your paypal credentials:
+
+```json
+{
+  "paypal": {
+    "client_id": "...",
+    "client_secret": "..."
+  }
+}
+```
+
+## Test
+
+With `babel-node` and --harmony flag, run:
 
 ```bash
 $ npm start
 ```
 
-## Development
+Then, open http://localhost:3000
 
-Using `nodemon` with `babel-node` to watch server files
+## Contribute
+
+Using `nodemon` with `babel-node` to watch server files:
 
 ```bash
 $ DEBUG=paypal-* nodemon --ignore public/ --exec npm run babel-node -- server.js
 ```
 
-Watch public files with `webpack`
+Watch public files with `webpack`:
 
 ```bash
 $ webpack --watch
