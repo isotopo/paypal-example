@@ -1,6 +1,6 @@
 # PayPal Example
 
-Payment example with PayPal
+Payment example with PayPal, using Koa
 
 ## Install
 
@@ -41,7 +41,7 @@ Create a `.paypalrc` file with your paypal credentials:
 
 ## Test
 
-With `babel-node` and --harmony flag, run:
+With `babel-node` and `--harmony` flag, run:
 
 ```bash
 $ npm start
@@ -57,7 +57,7 @@ Using `nodemon` with `babel-node` to watch server files:
 $ DEBUG=paypal-* nodemon --ignore public/ --exec npm run babel-node -- server.js
 ```
 
-Watch public files with `webpack`:
+Watch public files with `webpack` and `browser-sync` to reload:
 
 ```bash
 $ webpack --watch
