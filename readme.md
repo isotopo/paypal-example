@@ -47,7 +47,7 @@ With `babel-node` and --harmony flag, run:
 $ npm start
 ```
 
-Then, open http://localhost:3000
+Then, open [http://localhost:3000](http://localhost:3000)
 
 ## Contribute
 
