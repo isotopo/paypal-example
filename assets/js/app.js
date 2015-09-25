@@ -30,7 +30,7 @@ form.submit((e) => {
   .fail((response) => {
     debug.server('fail response', response)
 
-    failedElement.html(response.responseText)
+    failedElement.html(response.responseText || 'Error')
     failedElement.show()
     successElement.hide()
   })
