@@ -160,4 +160,5 @@ node_modules
 
 
 
-public/built
+public/js/built
+.paypalrc

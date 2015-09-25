@@ -1,11 +1,9 @@
 import bodyParser from 'koa-bodyparser'
-import joi from 'joi'
+import debug from './lib/debug'
 import koa from 'koa'
 import Router from 'koa-router'
 import views from 'koa-views'
 import serve from 'koa-static'
-import paypal from 'paypal-rest-sdk'
-import validate from 'koa-joi'
 
 let server = koa()
 let router = new Router()
@@ -33,32 +31,15 @@ server.use(function *(next) {
   } catch (err) {
     this.status = err.status || 500
     this.body = err.message
-  }
-})
+    this.app.emit('error', err, this)
 
-// Payment
-router.get('/payment', function *() {
-  yield this.render('payment')
-})
-
-router.post('/checkout', validate({
-  body: {
-    payment_concept: joi.string(),
-    payment_amount: joi.number(),
-    card_holder: joi.string().required(),
-    card_number: joi.string().required(),
-    card_date: joi.string(),
-    card_ccv: joi.number()
-  }
-}), function *() {
-  console.log(this.request.body)
-  this.body = {
-    status: 'yay'
+    debug.server(err)
   }
 })
 
 server
-  .use(router.routes())
+  .use(require('./controllers/main').routes())
+  .use(require('./controllers/payments').routes())
   .use(router.allowedMethods())
 
 server.listen(process.env.PORT || 3000)
