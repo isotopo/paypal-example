@@ -1,0 +1,19 @@
+machine:
+  node:
+    version: 5.4.0
+  services:
+    - docker
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - sudo pip install awscli --upgrade
+      - $(aws ecr get-login --region us-east-1)
+      - RELEASE=$(node -e "console.log(require('./package.json').version)")
+      - docker build -t paypal:$RELEASE . | cat
+      - docker tag paypal:$RELEASE 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:$RELEASE | cat
+      - docker push 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:$RELEASE | cat
+      - docker build -t paypal:latest . | cat
+      - docker tag paypal:latest 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:latest | cat
+      - docker push 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:latest | cat
