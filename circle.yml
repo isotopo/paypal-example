@@ -10,9 +10,6 @@ deployment:
     commands:
       - sudo pip install awscli --upgrade
       - $(aws ecr get-login --region us-east-1)
-      - docker build -t paypal:0.0.1 . | cat
-      - docker tag paypal:0.0.1 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:0.0.1 | cat
-      - docker push 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:0.0.1 | cat
       - docker build -t paypal:latest . | cat
       - docker tag paypal:latest 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:latest | cat
       - docker push 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:latest | cat
