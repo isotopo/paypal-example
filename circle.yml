@@ -8,8 +8,4 @@ deployment:
   production:
     branch: master
     commands:
-      - sudo pip install awscli --upgrade
-      - $(aws ecr get-login --region us-east-1)
-      - docker build -t paypal:latest . | cat
-      - docker tag paypal:latest 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:latest | cat
-      - docker push 079577709174.dkr.ecr.us-east-1.amazonaws.com/paypal:latest | cat
+      - ./deploy.sh
