@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "main": "server.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node --harmony server.js",
-    "babel-node": "./node_modules/.bin/babel-node --stage 0"
+    "start": "node server"
   },
   "author": "4yopping",
   "devDependencies": {
