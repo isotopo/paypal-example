@@ -1,9 +1,11 @@
-import Router from 'koa-router'
-import joi from 'joi'
-import debug from '../lib/debug'
-import paypal from '../lib/paypal'
-import util from 'util'
-import validate from 'koa-joi'
+'use strict'
+
+const Router = require('koa-router')
+const joi = require('joi')
+const debug = require('../lib/debug')
+const paypal = require('../lib/paypal')
+const util = require('util')
+const validate = require('koa-joi')
 
 let router = new Router({
   prefix: '/payments'
@@ -28,15 +30,13 @@ router.post('/checkout', validate({
 }), function *() {
   debug.server(this.request.body, 'body params')
 
-  let {
-    card_holder_firstname,
-    card_holder_lastname,
-    card_number,
-    card_date,
-    card_ccv,
-    payment_concept,
-    payment_amount
-  } = this.request.body
+  let card_holder_firstname = this.request.body.card_holder_firstname
+  let card_holder_lastname = this.request.body.card_holder_lastname
+  let card_number = this.request.body.card_number
+  let card_date = this.request.body.card_date
+  let card_ccv = this.request.body.card_ccv
+  let payment_concept = this.request.body.payment_concept
+  let payment_amount = this.request.body.payment_amount
 
   // Set payment object
   let payment = {
@@ -81,4 +81,4 @@ router.post('/checkout', validate({
   this.body = yield paypal.payment.createAsync(payment, {})
 })
 
-export default router
+module.exports = router

@@ -1,9 +1,11 @@
-import bodyParser from 'koa-bodyparser'
-import debug from './lib/debug'
-import koa from 'koa'
-import Router from 'koa-router'
-import views from 'koa-views'
-import serve from 'koa-static'
+'use strict'
+
+const bodyParser = require('koa-bodyparser')
+const debug = require('./lib/debug')
+const koa = require('koa')
+const Router = require('koa-router')
+const views = require('koa-views')
+const serve = require('koa-static')
 
 let server = koa()
 let router = new Router()
@@ -42,6 +44,8 @@ server
   .use(require('./controllers/payments').routes())
   .use(router.allowedMethods())
 
-server.listen(process.env.PORT || 3000)
+server.listen(process.env.PORT || 3000, function () {
+  console.log(`Server listening at ${process.env.PORT || 3000}`)
+})
 
-export default server
+module.exports = server

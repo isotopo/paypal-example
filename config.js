@@ -1,4 +1,6 @@
-import rc from 'rc'
+'use strict'
+
+const rc = require('rc')
 
 let config = rc('paypal', {
   paypal: {
@@ -8,4 +10,4 @@ let config = rc('paypal', {
   }
 })
 
-export default config
+module.exports = config

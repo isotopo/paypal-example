@@ -1,4 +1,6 @@
-import Router from 'koa-router'
+'use strict'
+
+const Router = require('koa-router')
 
 let router = new Router()
 
@@ -7,4 +9,4 @@ router.get('/', function *() {
   yield this.render('home')
 })
 
-export default router
+module.exports = router
