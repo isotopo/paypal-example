@@ -37,7 +37,7 @@ make_task_def() {
       }
     ]'
 
-    task_def=$(printf "$task_template" $CIRCLE_SHA1 $host_port)
+    task_def=$(printf "$task_template" $host_port)
 
 }
 
