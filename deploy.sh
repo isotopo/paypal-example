@@ -56,8 +56,8 @@ register_definition() {
 
 deploy_cluster() {
 
-    host_port=80
-    family="circle-ecs-cluster"
+    host_port=3000
+    family="paypal-cluster"
 
     make_task_def
     register_definition
