@@ -8,4 +8,4 @@ deployment:
   production:
     branch: master
     commands:
-      - ./deploy.sh
+      - ./deploy-production.sh

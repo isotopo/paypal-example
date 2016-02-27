@@ -1,5 +1,5 @@
 {% extends './layout.swig' %}
-{% block title %}PayPal Example{% endblock %}
+{% block title %}Ejemplo de PayPal{% endblock %}
 
 {% block content %}
   <div class="container">
