@@ -1,8 +1,10 @@
 machine:
   node:
     version: 5.4.0
-  services:
-    - docker
+
+dependencies:
+  pre:
+    - sudo pip install awsebcli
 
 deployment:
   production:
